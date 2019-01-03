@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-02T03:05:03.000Z</updated>
+  <updated>2019-01-03T04:01:36.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GitLab克隆代码时出现Permission denied (publickey,gssapi-keyex,gssapi-with-mic,passwo</title>
+    <link href="http://yoursite.com/2019/01/03/GitLab%E5%85%8B%E9%9A%86%E4%BB%A3%E7%A0%81%E6%97%B6%E5%87%BA%E7%8E%B0Permission%20denied%20(publickey,gssapi-keyex,gssapi-with-mic,passwo/"/>
+    <id>http://yoursite.com/2019/01/03/GitLab克隆代码时出现Permission denied (publickey,gssapi-keyex,gssapi-with-mic,passwo/</id>
+    <published>2019-01-03T04:01:36.000Z</published>
+    <updated>2019-01-03T04:01:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第一种，直接使用Http的链接clone代码"><a href="#第一种，直接使用Http的链接clone代码" class="headerlink" title="第一种，直接使用Http的链接clone代码"></a>第一种，直接使用Http的链接clone代码</h2><p><img src="https://user-gold-cdn.xitu.io/2019/1/3/16811be634cdd5b0?w=1968&amp;h=314&amp;f=png&amp;s=67760" alt=""><br>如果使用Http链接还是出Permission denied或者密码错误等异常情况，可以直接在Http链接中添加密码，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone http://xuxiaolong:xxxxxxxx@gitlab.xxx.com</span><br></pre></td></tr></table></figure></p><h2 id="第二种，使用SSH的方式clone代码。此方式需要在GitLab上配置ssh-key"><a href="#第二种，使用SSH的方式clone代码。此方式需要在GitLab上配置ssh-key" class="headerlink" title="第二种，使用SSH的方式clone代码。此方式需要在GitLab上配置ssh key"></a>第二种，使用SSH的方式clone代码。此方式需要在GitLab上配置ssh key</h2><h3 id="首先，打开本地-ssh文件夹"><a href="#首先，打开本地-ssh文件夹" class="headerlink" title="首先，打开本地.ssh文件夹"></a>首先，打开本地.ssh文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh</span><br></pre></td></tr></table></figure><h4 id="查看此文件夹下面是否存在id-rsa和id-rsa-pub两个文件，如果存在，表明之前有生成过ssh-key，如果不存在，可以通过以下命令直接生成ssh-key"><a href="#查看此文件夹下面是否存在id-rsa和id-rsa-pub两个文件，如果存在，表明之前有生成过ssh-key，如果不存在，可以通过以下命令直接生成ssh-key" class="headerlink" title="查看此文件夹下面是否存在id_rsa和id_rsa.pub两个文件，如果存在，表明之前有生成过ssh key，如果不存在，可以通过以下命令直接生成ssh key"></a>查看此文件夹下面是否存在id_rsa和id_rsa.pub两个文件，如果存在，表明之前有生成过ssh key，如果不存在，可以通过以下命令直接生成ssh key</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &apos;xxx@xxx.com&apos; (‘’中的参数就是你的邮箱地址)</span><br></pre></td></tr></table></figure><h4 id="终端输入此命令，一直回车-直到出现下图的结果，表示ssh-key生成完成"><a href="#终端输入此命令，一直回车-直到出现下图的结果，表示ssh-key生成完成" class="headerlink" title="终端输入此命令，一直回车,直到出现下图的结果，表示ssh key生成完成"></a>终端输入此命令，一直回车,直到出现下图的结果，表示ssh key生成完成</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/3/16811cbfd748ce66?w=1164&amp;h=620&amp;f=png&amp;s=179409" alt=""></p><h4 id="此时-ssh问价夹下面会出现test-rsa和test-rsa-pub两个文件"><a href="#此时-ssh问价夹下面会出现test-rsa和test-rsa-pub两个文件" class="headerlink" title="此时.ssh问价夹下面会出现test_rsa和test_rsa.pub两个文件"></a>此时.ssh问价夹下面会出现test_rsa和test_rsa.pub两个文件</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/3/16811cdec9ffef81?w=1144&amp;h=174&amp;f=png&amp;s=57196" alt=""></p><h4 id="打开test-rsa-pub文件，将里面的所有内容复制到GitLab上对应位置"><a href="#打开test-rsa-pub文件，将里面的所有内容复制到GitLab上对应位置" class="headerlink" title="打开test_rsa.pub文件，将里面的所有内容复制到GitLab上对应位置"></a>打开test_rsa.pub文件，将里面的所有内容复制到GitLab上对应位置</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/3/16811d0979ca7605?w=2678&amp;h=1292&amp;f=png&amp;s=239418" alt=""></p><h4 id="此时，ssh-key配置完成。"><a href="#此时，ssh-key配置完成。" class="headerlink" title="此时，ssh key配置完成。"></a>此时，ssh key配置完成。</h4><h2 id="如果同时使用GitLab和GitHub，那么就需要配置多个ssh-key"><a href="#如果同时使用GitLab和GitHub，那么就需要配置多个ssh-key" class="headerlink" title="如果同时使用GitLab和GitHub，那么就需要配置多个ssh key"></a>如果同时使用GitLab和GitHub，那么就需要配置多个ssh key</h2><h3 id="1、使用如下命令，指定文件名生成一个ssh-key"><a href="#1、使用如下命令，指定文件名生成一个ssh-key" class="headerlink" title="1、使用如下命令，指定文件名生成一个ssh key"></a>1、使用如下命令，指定文件名生成一个ssh key</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &apos;xxx@xxx.com&apos; -f ~/.ssh/gitlab_rsa</span><br></pre></td></tr></table></figure><h4 id="此时在-ssh文件夹下面会生成gitlab-rsa和gitlab-rsa-pub两个文件"><a href="#此时在-ssh文件夹下面会生成gitlab-rsa和gitlab-rsa-pub两个文件" class="headerlink" title="此时在.ssh文件夹下面会生成gitlab_rsa和gitlab_rsa.pub两个文件"></a>此时在.ssh文件夹下面会生成gitlab_rsa和gitlab_rsa.pub两个文件</h4><h3 id="2、在-ssh文件夹下面新建名为config的文件，用来配置多个ssh-key"><a href="#2、在-ssh文件夹下面新建名为config的文件，用来配置多个ssh-key" class="headerlink" title="2、在~/.ssh文件夹下面新建名为config的文件，用来配置多个ssh key"></a>2、在~/.ssh文件夹下面新建名为config的文件，用来配置多个ssh key</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># gitlab</span><br><span class="line">Host gitlab.bitautotech.com</span><br><span class="line">    HostName gitlab.bitautotech.com</span><br><span class="line">    User xuxiaolong3</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/gitlab_rsa</span><br><span class="line"># github</span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"># 配置文件参数</span><br><span class="line"># Host : Host可以看作是一个你要识别的模式，对识别的模式，进行配置对应的的主机名和ssh文件</span><br><span class="line"># HostName : 要登录主机的主机名</span><br><span class="line"># User : 登录名,不填写的话，默认使用邮箱作为登录名</span><br><span class="line"># IdentityFile : 指明上面User对应的identityFile路径</span><br></pre></td></tr></table></figure><p>此时再次去终端进行clone，第一次会让你输入密码，输入完成之后就可以正常clone了。</p><h4 id="参考文章：https-www-cnblogs-com-hafiz-p-8146324-html"><a href="#参考文章：https-www-cnblogs-com-hafiz-p-8146324-html" class="headerlink" title="参考文章：https://www.cnblogs.com/hafiz/p/8146324.html"></a>参考文章：<a href="https://www.cnblogs.com/hafiz/p/8146324.html" target="_blank" rel="noopener">https://www.cnblogs.com/hafiz/p/8146324.html</a></h4>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;第一种，直接使用Http的链接clone代码&quot;&gt;&lt;a href=&quot;#第一种，直接使用Http的链接clone代码&quot; class=&quot;headerlink&quot; title=&quot;第一种，直接使用Http的链接clone代码&quot;&gt;&lt;/a&gt;第一种，直接使用Http的链接clone
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>冒泡排序和快速排序的几种方式（OC实现）</title>
